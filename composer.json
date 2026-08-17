@@ -1,0 +1,11 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Christmas\\": "src/"
+    }
+  },
+  "require": {
+    "mpdf/mpdf": "^8.3",
+    "spatie/browsershot": "^5.4"
+  }
+}
