@@ -12,6 +12,7 @@ require_once "../templates/AllDonors.php";
 require_once "../templates/AllToyDrDonors.php";
 require_once "../templates/AllStockingsDonor.php";
 require_once "../templates/AllActiveDonors.php";
+
 use Christmas\Repository\ReportingRepository;
 
 use Mpdf\Mpdf;
@@ -21,8 +22,9 @@ use PDO;
 class ReportingService extends BaseService
 {
     private ReportingRepository $reportingRepo;
+  
 
-    public function __construct(PDO $db, ReportingRepository $reportingRepo)
+    public function __construct(PDO $db, ReportingRepository $reportingRepo )
     {
         parent::__construct($db);
         $this->reportingRepo = $reportingRepo;
@@ -573,6 +575,7 @@ public function createActiveDonors()
   
         
     $data = $this->reportingRepo->getAllActiveDonors();
+    // $data = $this->donorRepo->getAllActiveDonors();
 
 
     $html = createActiveDonors($data);

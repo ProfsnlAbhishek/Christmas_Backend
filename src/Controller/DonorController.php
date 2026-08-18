@@ -101,5 +101,17 @@ public function archiveDonors(): void
 
 
 
+ public function getAllActiveDonors(): void {
+        try{
+            $donors = $this->donorService->getAllActiveDonors();
+            $this->sendJson($donors);
+        }catch (Exception $e){
+            $this->sendError($e->getMessage(), 400);
+        }
+    }
+
+
+
+
 
 }

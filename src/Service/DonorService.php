@@ -102,5 +102,11 @@ class DonorService extends BaseService
             }
         });
     }
+
+     public function getAllActiveDonors(): array
+    {
+        return array_map(fn($row) => new Donor($row), $this->donorRepo->getAllActiveDonors());
+    }
+
     
 }
