@@ -1,3 +1,5 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
 DROP SCHEMA IF EXISTS `christmas`;
  
 CREATE SCHEMA IF NOT EXISTS `christmas` CHARACTER SET utf8;
@@ -1192,3 +1194,5 @@ CREATE TABLE IF NOT EXISTS `christmas`.`child`(
 	CONSTRAINT fk_clild_race
 		FOREIGN KEY(`race`) REFERENCES `christmas`.`race`(`race`)
 ) ENGINE = InnoDB;
+
+SET FOREIGN_KEY_CHECKS = 1;

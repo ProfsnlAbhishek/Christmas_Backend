@@ -236,4 +236,17 @@ class DonorRepository extends BaseRepository
     return $stmt->execute();
 
    }
+
+   public function findAllActiveDonors(): array 
+   {
+    $stmt = $this->db->prepare("
+        SELECT * FROM donors WHERE active = 1
+    ");
+
+    $stmt->execute();
+
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return array_map(fn($row) => new Donor($row), $rows);
+   }
 }

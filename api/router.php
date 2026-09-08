@@ -45,6 +45,7 @@ $routes = [
 
     //donors
     ['GET', '#^/api/donor/?$#', 'donorController@getAllDonors'],
+    ['GET', '#^/api/donor/active/?$#', 'donorController@getAllActiveDonors'],
     ['POST', '#^/api/donor/?$#', 'donorController@createDonor'],
     ['PUT', '#^/api/donor/(\d+)?$#', 'donorController@updateDonor'],
     ['GET', "#^/api/donor/archive/?$#", 'donorController@archiveDonors'],
