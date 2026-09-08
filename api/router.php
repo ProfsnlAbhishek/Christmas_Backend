@@ -50,6 +50,7 @@ $routes = [
     ['PUT', '#^/api/donor/(\d+)?$#', 'donorController@updateDonor'],
     ['GET', "#^/api/donor/archive/?$#", 'donorController@archiveDonors'],
     ['GET', "#^/api/donor/childAssociated/?$#", 'donorController@getDonorsChildAssociated'],
+    ['GET', '#^/api/donor/allActiveDonors/?$#', "donorController@getAllActiveDonors"],
 
     //contact
     ['GET', '#^/api/contacts/(\d+)?$#', 'donorContactController@getAllContactsByID'],
