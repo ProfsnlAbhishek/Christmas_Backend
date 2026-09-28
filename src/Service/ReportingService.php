@@ -403,10 +403,10 @@ public function createGiftPickUp()
 public function createDonorInformation(int $donorID)
 {
     if ($donorID === 0) {
-        $data = $this->reportingRepo->getAllDonorsInfo();
+        $data = $this->reportingRepo->getAllDonorsInfoActive();
         $contact = $this->reportingRepo->getAllContactOfAllDonor();
     } else {
-        $data = $this->reportingRepo->getDonorInfo($donorID);
+        $data = $this->reportingRepo->getDonorInfoActive($donorID);
         $contact = $this->reportingRepo->getContactOfDonor($donorID);
     }
 

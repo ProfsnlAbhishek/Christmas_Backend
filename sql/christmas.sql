@@ -1177,7 +1177,7 @@ CREATE TABLE IF NOT EXISTS `christmas`.`child`(
 	`childID` INT NOT NULL AUTO_INCREMENT,
     `f_name` VARCHAR(70) NOT NULL,
     `l_name` VARCHAR(70) NOT NULL,
-	`sacwisID` INT NOT NULL,
+	`sacwisID` VARCHAR(11) DEFAULT '',
     `age` INT NOT NULL,
 	`gender` VARCHAR(6) DEFAULT '',
 	`race` VARCHAR(20) DEFAULT '',

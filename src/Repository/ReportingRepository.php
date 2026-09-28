@@ -214,12 +214,13 @@ class ReportingRepository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getAllDonorsInfo(): array
+    public function getAllDonorsInfoActive(): array
     {
         $stmt = $this->db->prepare("
             SELECT 
                *
-            FROM donors d;
+            FROM donors d
+            WHERE active = 1;
           
         ");
         $stmt->execute();
@@ -227,13 +228,13 @@ class ReportingRepository
     }
 
 
-    public function getDonorInfo(int $donorID): array
+    public function getDonorInfoActive(int $donorID): array
     {
         $stmt = $this->db->prepare("
             SELECT 
                *
             FROM donors d
-            WHERE donorID = :donorID;
+            WHERE donorID = :donorID && active = 1;
           
         ");
         $stmt->execute(["donorID" => $donorID]);
@@ -244,8 +245,10 @@ class ReportingRepository
         $stmt = $this->db->prepare("
                 SELECT 
                     *
-                FROM donor_contacts
-                WHERE donorID = :donorID;
+                FROM donor_contacts dc
+                LEFT JOIN donors d
+                    ON dc.donorID = d.donorID
+                WHERE d.active = 1;
         
         ");
 

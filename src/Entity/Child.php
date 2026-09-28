@@ -9,7 +9,7 @@ class Child extends BaseEntity{
     public string $f_name;
     public string $l_name;
     public ?int $age;
-    public int $sacwisID;
+    public string $sacwisID;
     public string $gender = "";
     public string $race;
     public ?string $clothing_type;
