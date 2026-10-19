@@ -93,7 +93,15 @@ class ReportingService extends BaseService
 
     public function createChildByID(int $childID)
     {
-        $data = $this->reportingRepo->getChildByID($childID);
+
+        $data = null;
+        if ($childID === 0){
+            $data = $this->reportingRepo->getAllChild();
+        }else{
+
+            $data = $this->reportingRepo->getChildByID($childID);
+        }
+
 
 
         $html = createChildByID($data, $childID);

@@ -167,14 +167,14 @@ function buildWorkerPage(array $results)
             <tr>
 
                 <th>
-                    FIRST NAME
+                    ID
+                </th>
+                <th>
+                FIRST NAME
                 </th>
 
                 <th>
                     LAST NAME
-                </th>
-                <th>
-                    ID
                 </th>
                 <th>
                     ADOPTOR
@@ -198,15 +198,15 @@ function buildWorkerPage(array $results)
             <tr>
 
                 <td>
+                    ' . htmlspecialchars($row["childID"]) . '
+                </td>
+                <td>
                     ' . htmlspecialchars($row["f_name"]) . '
                 </td>
 
 
                 <td>
                     ' . htmlspecialchars($row["l_name"]) . '
-                </td>
-                <td>
-                    ' . htmlspecialchars($row["childID"]) . '
                 </td>
                 <td>
                     ' . htmlspecialchars($row["donor_name"]) . '

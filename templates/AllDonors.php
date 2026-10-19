@@ -113,29 +113,25 @@ function buildDonorsPage(array $donor, $contact)
 {
 
 
-    $pickDate = "";
+   
+$pickDate = "";
+$pickTime = "";
 
-    if (!empty($donor["pick_date"])) {
-
-        $date = strtotime($donor["pick_date"]);
-
-        if ($date) {
-            $pickDate = date("F j, Y", $date);
-        }
+// Format Date
+if (!empty($donor["pick_date"])) {
+    $date = strtotime($donor["pick_date"]); // e.g. 2026-10-15
+    if ($date) {
+        $pickDate = date("F j, Y", $date); // e.g. October 15, 2026
     }
+}
 
-
-
-    $pickTime = "";
-
-    if (!empty($donor["pick_date"])) {
-
-        $time = strtotime($donor["pick_date"]);
-
-        if ($time) {
-            $pickTime = date("g:i A", $time);
-        }
+// Format Time
+if (!empty($donor["pick_time"])) { 
+    $time = strtotime($donor["pick_time"]); // e.g. 14:30
+    if ($time) {
+        $pickTime = date("g:i A", $time); // e.g. 2:30 PM
     }
+}
 
 
 
@@ -156,7 +152,7 @@ if (!empty($contact)) {
         | EMAIL: '.htmlspecialchars($c["email"]).'
         <br>
         ALT: '.htmlspecialchars($c["alternate_phone"]).'
-        | FAX: '.htmlspecialchars($c["fax"]).'
+        | FAX/EXT: '.htmlspecialchars($c["fax"]).'
     </div>
 
     <div class="label">
@@ -363,10 +359,6 @@ if (!empty($contact)) {
         </div>
 
     </div>
-
-
-
-
 
     <br>
 

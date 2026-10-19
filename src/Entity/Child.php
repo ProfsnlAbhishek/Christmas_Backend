@@ -16,7 +16,7 @@ class Child extends BaseEntity{
     public ?string $size;
     public ?string $shoe_size = null;
     public ?string $gift_card = null;
-    public int $workerID ;
+    public ?int $workerID = null ;
     public ?int $donorID;
     public ?string $suggestion = "";
 

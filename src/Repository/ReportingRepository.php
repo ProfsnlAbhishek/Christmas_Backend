@@ -55,7 +55,7 @@ class ReportingRepository
         JOIN child c
         ON d.donorID = c.donorID
         WHERE d.donorID IN (SELECT DISTINCT donorID FROM CHILD)
-        ORDER BY d.donor_name, c.f_name;
+        ORDER BY d.donorID, c.childID;
     
     ");
 
@@ -64,6 +64,28 @@ class ReportingRepository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+
+    public function getAllChild(): array
+    {
+        $stmt = $this->db->prepare("
+        SELECT
+            c.childID,
+            c.f_name,
+            c.l_name,
+            d.donor_name,
+            CONCAT(e.First_Name, ' ', e.Last_Name) AS worker
+        FROM child c
+        JOIN donors d 
+            ON c.donorID = d.donorID
+        JOIN employee_data.employee e
+            ON c.workerID = e.Employee_Index
+    ");
+
+      $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 
     public function getChildByID(int $childID): array
@@ -80,7 +102,7 @@ class ReportingRepository
             ON c.donorID = d.donorID
         JOIN employee_data.employee e
             ON c.workerID = e.Employee_Index
-        WHERE c.childID = :childID
+        WHERE c.childID = :childID;
     ");
 
         $stmt->execute([
@@ -116,8 +138,7 @@ class ReportingRepository
                 ON c.donorID = d.donorID
             INNER JOIN employee_data.employee e
                 ON c.workerID = e.Employee_Index
-            WHERE c.workerID = :workerID
-              ORDER BY worker;
+            WHERE c.workerID = :workerID;
 
         ");
 
@@ -145,8 +166,7 @@ class ReportingRepository
                 ON c.donorID = d.donorID
             INNER JOIN employee_data.employee e
                 ON c.workerID = e.Employee_Index
-            WHERE c.workerID IN (SELECT DISTINCT workerID from child)
-            ORDER BY worker;
+            WHERE c.workerID IN (SELECT DISTINCT workerID from child);
 
         ");
 
@@ -248,7 +268,8 @@ class ReportingRepository
                 FROM donor_contacts dc
                 LEFT JOIN donors d
                     ON dc.donorID = d.donorID
-                WHERE d.active = 1;
+                WHERE d.active = 1 
+                AND d.donorID = :donorID;
         
         ");
 

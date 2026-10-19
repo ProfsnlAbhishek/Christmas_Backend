@@ -12,6 +12,7 @@ class Donor extends BaseEntity{
     public string $state;
     public string $zip;
     public string $pick_date;
+    public string $pick_time;
     public string $pick_assigned_to;
     public ?string $pick_det = '';
     public ?int $kids_tag = 0;

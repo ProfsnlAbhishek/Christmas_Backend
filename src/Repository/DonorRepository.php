@@ -35,9 +35,9 @@ class DonorRepository extends BaseRepository
         $stmt = $this->db->prepare(
             "
             INSERT INTO donors
-                (donor_name, address1, address2, city, state, zip, pick_date, pick_assigned_to, pick_det, kids_tag, age0_11, age12abv, gift_tag, inf_boy, inf_girl, tod_boy, tod_girl, age6_10b, age6_10g, age11_14b, age11_14g, age15_18b, age15_18g, toy_dr, instruction, active)
+                (donor_name, address1, address2, city, state, zip, pick_date, pick_time, pick_assigned_to, pick_det, kids_tag, age0_11, age12abv, gift_tag, inf_boy, inf_girl, tod_boy, tod_girl, age6_10b, age6_10g, age11_14b, age11_14g, age15_18b, age15_18g, toy_dr, instruction, active)
                 VALUES
-                (:donor_name, :address1, :address2, :city, :state, :zip, :pick_date, :pick_assigned_to, :pick_det, :kids_tag, :age0_11, :age12abv, :gift_tag, :inf_boy, :inf_girl, :tod_boy, :tod_girl, :age6_10b, :age6_10g, :age11_14b, :age11_14g, :age15_18b, :age15_18g, :toy_dr, :instruction, :active)
+                (:donor_name, :address1, :address2, :city, :state, :zip, :pick_date, :pick_time, :pick_assigned_to, :pick_det, :kids_tag, :age0_11, :age12abv, :gift_tag, :inf_boy, :inf_girl, :tod_boy, :tod_girl, :age6_10b, :age6_10g, :age11_14b, :age11_14g, :age15_18b, :age15_18g, :toy_dr, :instruction, :active)
             "
         );
 
@@ -49,6 +49,7 @@ class DonorRepository extends BaseRepository
             "state" => $donor->state,
             "zip" => $donor->zip,
             "pick_date" => $donor->pick_date,
+            "pick_time" => $donor->pick_time,
             "pick_assigned_to" => $donor->pick_assigned_to,
             "pick_det" => $donor->pick_det,
             "kids_tag" => $donor->kids_tag,
@@ -85,6 +86,7 @@ class DonorRepository extends BaseRepository
                 state = :state, 
                 zip = :zip,
                 pick_date = :pick_date,
+                pick_time = :pick_time,
                 pick_assigned_to = :pick_assigned_to,
                 pick_det = :pick_det,
                 kids_tag = :kids_tag, 
@@ -116,6 +118,7 @@ class DonorRepository extends BaseRepository
             "state" => $donor->state,
             "zip" => $donor->zip,
             "pick_date" => $donor->pick_date,
+            "pick_time" => $donor->pick_time,
             "pick_assigned_to" => $donor->pick_assigned_to,
             "pick_det" => $donor->pick_det,
             "kids_tag" => $donor->kids_tag,
@@ -213,6 +216,7 @@ class DonorRepository extends BaseRepository
         "
             UPDATE donors
             SET pick_date = '',
+                pick_time = '',
                 pick_assigned_to = '',
                 pick_det = '',
                 kids_tag = 0,
