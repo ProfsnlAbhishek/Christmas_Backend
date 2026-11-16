@@ -29,8 +29,7 @@ function createGiftPickUp(array $results)
 
 
 
-    foreach ($results as $row) {
-
+ foreach ($results as $row) {
 
         // Format date
         $formattedDate = date(
@@ -38,48 +37,41 @@ function createGiftPickUp(array $results)
             strtotime($row["pick_date"])
         );
 
+        // Only show time if it exists
+        $timePart = '';
 
-        // Format time
-        $formattedTime = date(
-            "g:i A",
-            strtotime($row["pick_time"])
-        );
+        if (!empty(trim($row["pick_time"] ?? ''))) {
+            $formattedTime = date(
+                "g:i A",
+                strtotime($row["pick_time"])
+            );
 
-
+            $timePart = '
+                at
+                <span class="pickup-time">
+                    ' . htmlspecialchars($formattedTime) . '
+                </span>
+            ';
+        }
 
         $html .= '
-
         <div class="pickup-item">
-
             <span class="pickup-date">
                 ' . htmlspecialchars($formattedDate) . '
             </span>
 
-
-            at
-
-
-            <span class="pickup-time">
-                ' . htmlspecialchars($formattedTime) . '
-            </span>
-
+            ' . $timePart . '
 
             ---
-
 
             <span class="donor-name">
                 ' . htmlspecialchars($row["donor_name"]) . '
             </span>
-
-
         </div>
-
         ';
-
-
     }
 
-
     return $html;
-
 }
+
+?>
