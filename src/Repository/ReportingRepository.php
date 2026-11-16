@@ -222,7 +222,7 @@ class ReportingRepository
                 d.donorID,
                 d.donor_name,
                 LEFT(d.pick_date, 10) AS pick_date,
-                RIGHT(d.pick_date, 5) AS pick_time
+                RIGHT(d.pick_time, 5) AS pick_time
             FROM donors d
             WHERE d.pick_date IS NOT NULL
             AND d.pick_date <> ''
