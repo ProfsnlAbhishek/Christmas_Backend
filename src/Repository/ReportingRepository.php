@@ -29,7 +29,7 @@ class ReportingRepository
                 JOIN child c
                 ON d.donorID = c.donorID
                 WHERE d.donorID = :donorID
-                ORDER BY c.f_name;
+                ORDER BY c.childID;
             "
         );
 
@@ -189,7 +189,7 @@ class ReportingRepository
     JOIN employee_data.employee e
         ON c.workerID = e.Employee_Index
     WHERE TRIM(c.gift_card) <> ''
-    ORDER BY c.gift_card, c.f_name;
+    ORDER BY c.gift_card, c.childID;
 
     
     ");
